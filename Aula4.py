@@ -39,16 +39,33 @@ class Serie(Programa):
     def __str__(self):
         return super().__str__() + f' - Temporadas: {self.temporadas}'
 
-class PlayList(Programa):
-    def __init__(self, nome, ano):
-        super().__init__(nome, ano)
+#class PlayList(list):
+#    def __init__(self, nome, programas):
+#        self.nome = nome
+#       super().__init__(programas)
+
+class PlayList:
+    def __init__(self, nome, programas):
+        self.nome = nome
+        self._programas = programas
+
+    def __getitem__(self, item):
+        return self._programas[item]
+
+    def __len__(self):
+        return len(self._programas)
 
 vingadores = Filme('vingadores - guerra infinita', 2018, 160)
 vingadores.dar_like()
-print(vingadores)
 
 atlanta = Serie('atlanta', 2018, 2)
 atlanta.nome = 'atlanta'
 atlanta.dar_like()
 atlanta.dar_like()
-print(atlanta)
+
+programas = [vingadores, atlanta]
+playlist = PlayList('PlayList1',programas)
+for programa in playlist:
+    print(programa)
+
+print(len(playlist))
