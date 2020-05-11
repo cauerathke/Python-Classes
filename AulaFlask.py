@@ -1,13 +1,12 @@
 #Flask versão 0.12.2
 
-from flask import Flask 
-from flask import render_template 
+from flask import Flask, render_template 
 
 app = Flask(__name__)
 
 
 @app.route('/inicio')
 def ola():
-    return render_template('lista.html')
+    return render_template('lista.html', titulo='Jogos')
 
 app.run()
